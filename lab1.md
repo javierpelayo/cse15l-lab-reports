@@ -10,7 +10,7 @@ You can use your Tritonlink password to create a new password for this sdacs acc
 ## Part 2: Install Visual Studio Code
 Go to the following link:
 
-https://code.visualstudio.com/
+[Link](https://code.visualstudio.com/)
 
 and follow the instructions to download and install visual studio code for your specific operating system.
 
