@@ -1,7 +1,7 @@
 ## Part 1: CSE15L Account
 Using your TritonLink username and ID number look up your account by clicking the following link:
 
-https://sdacs.ucsd.edu/~icc/index.php
+[Link](https://sdacs.ucsd.edu/~icc/index.php)
 
 If you haven't created a password for this specific account then you can do so by click "Reset Password" or "Change your password" at the top.
 
@@ -27,7 +27,7 @@ Now to connect to a server, simply open a terminal or Visual Studio Code and hov
 
 Now you can type the following command in the terminal:
 
-`ssh <username>@ieng6.ucsd.edu`
+`ssh cs15lwi23XX@ieng6.ucsd.edu`
 
 and then enter the password associated with your CSE15L account, note that the password is not displayed when typed due to security reasons.
 
