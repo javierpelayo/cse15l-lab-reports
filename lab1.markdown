@@ -1,10 +1,3 @@
----
-layout: post
-title:  "Guide on getting started with CSE15L"
-date:   2023-01-12 21:24:19 -0800
-categories: jekyll update
----
-
 ## Part 1: CSE15L Account
 Using your TritonLink username and ID number look up your account by clicking the following link:
 
