@@ -6,7 +6,6 @@
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
-
 class Handler implements URLHandler {
     // The one bit of state on the server: a number that will be manipulated by
     // various requests.
@@ -100,9 +99,85 @@ We also have our instance variable "strList" that would be changed by the additi
 
 ## Part 2
 
+For the method `averageWithoutLowest` in ArrayExamples.java, a bug in the program was that when we input an array of elements such that there are a lot more lower elements that are similar than there are higher elements, we get an error in the average.
+
+For example:
+
+[1, 1, 1, 1, 2]
+
+Would produce an average of 0.5, although this method is supposed to return back 2 since we are simply ignoring the lowest element, which is 1 in this case.
+
+So writing the following JUnit test:
+
+```java
+@Test
+public void testAvgWithoutLowest2() {
+  double[] arr = {1.0, 1.0, 1.0, 1.0, 2.0};
+  assertEquals(2.0, ArrayExamples.averageWithoutLowest(arr), 0.0);
+}
+```
+
+Will produce a failure since we are expecting the double value "2.0" to be returned back from `averageWithoutLowest()`
+
+```java
+  @Test
+  public void testAvgWithoutLowest3() {
+    double[] arr = {1.0, 2.0, 3.0, 4.0, 5.0};
+    assertEquals(3.5, ArrayExamples.averageWithoutLowest(arr), 0.0);
+  }
+```
+
+The above test should pass since the first element is the lowest and gets filtered out correctly, thus giving us an average of 3.5.
+
+Once we have ran the tests, we get the following failures (**symptoms**), most importantly `testAvgWithoutLowest2()` failed and `testAvgWithoutLowest3()` passed.
+
+![Image](images/lab2/sc-failures.png)
+
+We can see the following code block shows the bug in the return statement in the last line `return sum / (arr.length - 1)`, rather than dividing by `arr.length - 1` we can keep a count of how many elements we are actually summing.
+
+Before bug fix:
+
+```java
+static double averageWithoutLowest(double[] arr) {
+  if(arr.length < 2) { return 0.0; }
+  double lowest = arr[0];
+  for(double num: arr) {
+    if(num < lowest) { lowest = num; }
+  }
+  double sum = 0;
+  for(double num: arr) {
+    if(num != lowest) { sum += num; }
+  }
+  return sum / (arr.length - 1);
+}
+```
+
+After bug fix:
+
+```java
+static double averageWithoutLowest(double[] arr) {
+  if(arr.length < 2) { return 0.0; }
+  double lowest = arr[0];
+  for(double num: arr) {
+    if(num < lowest) { lowest = num; }
+  }
+  double sum = 0;
+  int count = 0;
+  for(double num: arr) {
+    if(num != lowest) {
+      sum += num;
+      count++;
+    }
+  }
+  return sum / count;
+}
+```
+
+This should now return the average once we have multiple elements that are the lowest (which shouldn't be counted in the first place)
+
 ## Part 3
 
-
+The introduction of the URLHandler interface is a pretty interesting one since it facilitates what we can do with URLs and manipulate them by filtering out information from them such as when we use queries and then use the `String.split()` method. This allows the processing of data from other users that visit the url. Also the fact that as long as the server is active the data is persistent, meaning that it is stored somewhere in memory which is essentially like having another "application" running on your computer except this application is a web server.
 
 
 
