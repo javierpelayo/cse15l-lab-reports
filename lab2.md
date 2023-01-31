@@ -57,9 +57,9 @@ class StringServer {
     }
 }
 ```
-![Image]()
+![Image](images/lab2/sc1.png)
 
-![Image]()
+![Image](images/lab2/sc2.png)
 
 
 When the main method in StringServer is called, we call `Server.start()` to start up the web server, in Server we create an HttpServer object called "server" which calls a `create()` method to make a socket address using the port provided. 
