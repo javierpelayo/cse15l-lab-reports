@@ -70,7 +70,7 @@ Which output the following:
 
 # Edit the code file to fix the failing test
 
-From the above I can see that the issue comes from the merge method in ListExamples.java, and it gives me the line number: 44, so I do the following:
+From the above I can see that the issue comes from the merge method in ListExamples.java, and it gives me the line number: 42, so I do the following:
 
 ```
 vim ListExamples.java
